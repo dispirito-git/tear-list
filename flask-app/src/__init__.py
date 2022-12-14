@@ -26,12 +26,12 @@ def create_app():
     
     # Import the various routes
     from src.views import views
-    from src.customers.customers import customers
-    from src.products.products  import products
+    from src.admin_api.admin import admin_blueprint
+    from src.users_api.users import users_blueprint
 
     # Register the routes that we just imported so they can be properly handled
     app.register_blueprint(views,       url_prefix='/classic')
-    app.register_blueprint(customers,   url_prefix='/classic')
-    app.register_blueprint(products,    url_prefix='/classic')
+    app.register_blueprint(admin_blueprint,   url_prefix='/admin')
+    app.register_blueprint(users_blueprint,    url_prefix='/user')
 
     return app
