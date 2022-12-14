@@ -1,25 +1,45 @@
-# MySQL + Flask Boilerplate Project
+# Decription:
+TearList is a social media platform for people to share with friends and communities their tier lists for various subjects. Tier lists on this app are constructed in the popular internet S through F format. TearList provides users with a chance to share their favorites, least favorites, hot-takes (hence the tears!), and mild-takes.  
 
-This repo contains a boilerplate setup for spinning up 2 docker containers: 
-1. A MySQL 8 container for obvious reasons
-1. A Python Flask container to implement a REST API
-
-## How to setup and start the containers
-**Important** - you need Docker Desktop installed
-
-1. Clone this repository.  
-1. Create a file named `db_root_password.txt` in the `secrets/` folder and put inside of it the root password for MySQL. 
-1. Create a file named `db_password.txt` in the `secrets/` folder and put inside of it the password you want to use for the `webapp` user. 
-1. In a terminal or command prompt, navigate to the folder with the `docker-compose.yml` file.  
-1. Build the images with `docker compose build`
-1. Start the containers with `docker compose up`.  To run in detached mode, run `docker compose up -d`. 
-
-## For setting up a Conda Web-Dev environment:
-
-1. `conda create -n webdev python=3.9`
-1. `conda activate webdev`
-1. `pip install flask flask-mysql flask-restful cryptography flask-login`
+# How to use:
+1. Log in
+2. View the explore page and find the newest profile/community posts
+3. Join Communities to find tier lists about topics that interest you!
+4. Make posts through the create page
 
 
+# Routes
+
+## Admin
+
+### update_user() - POST
+Update the user with the given username and email.
+### get_users() - GET
+Get all the users from the database.
+### get_communities() - GET
+Get all the communities from the database.
+### update_community() - POST
+Update the community with new name and description.
 
 
+## User
+
+### postLoginInfo() - POST
+Takes in a username and password and returns the user's information if the login is successful.
+### create_a_post() - POST
+Create a post with the given (s, a, b, c, d, e, f) tiers, title, and description.
+### get_followers() - GET
+Get all the followers of the user with the given userID.
+### get_following() - GET
+Get all the users that the user with the given userIgitD is following.
+### get_user_communities(userID) - GET
+Get all the communities that this user is a member of.
+### get_user_posts(userID) - GET
+Get all the posts that this user has made.
+
+## Community Leader
+
+### get_members() - GET
+Get all the members of the community with the given communityID.
+### get_community_posts() - GET
+Get all the posts that have been made in the community with the given communityID
